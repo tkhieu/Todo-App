@@ -1,6 +1,7 @@
 package com.azever.todoapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.azever.todoapp.R;
+import com.azever.todoapp.TaskDetailActivity;
 import com.azever.todoapp.models.Task;
 
 import java.util.ArrayList;
@@ -46,6 +48,14 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         textViewDescription.setText(task.getDescription());
         textViewTime.setText(task.getTime());
         checkBoxStatus.setChecked(task.isStatus());
+
+        textViewName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, TaskDetailActivity.class);
+                context.startActivity(i);
+            }
+        });
 
         return v;
     }
